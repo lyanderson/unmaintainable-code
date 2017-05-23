@@ -24,7 +24,7 @@ To foil the maintenance programmer, you have to understand how he thinks. He has
 
 He views your code through a toilet paper tube. He can only see a tiny piece of your program at a time. You want to make sure he can never get at the big picture from doing that. You want to make it as hard as possible for him to find the code he is looking for. But even more important, you want to make it as awkward as possible for him to safely **ignore** anything.
 
-Programmers are lulled into complacency by conventions. By every once in a while, by subtly violating convention, you force him to read every line of your code with a magnifying glass.
+Programmers are lulled into complacency by conventions. But every once in a while, by subtly violating convention, you force him to read every line of your code with a magnifying glass.
 
 You might get the idea that every language feature makes code unmaintainable -- not so, only if properly misused.
 
@@ -61,7 +61,7 @@ To break the boredom, use a thesaurus to look up as much alternate vocabulary as
 
 #### Use Plural Forms From Other Languages
 
-A VMS script kept track of the "statii" returned from various "Vaxen". Esperanto , [Klingon](http://www.kli.org/) and [Hobbitese](http://www.chriswetherell.com/hobbit/default.asp target=) qualify as languages for these purposes. For pseudo-Esperanto pluraloj, add oj. You will be doing your part toward world peace.
+A VMS script kept track of the "statii" returned from various "Vaxen". Esperanto , [Klingon](http://www.kli.org/) and [Hobbitese](http://www.chriswetherell.com/hobbit) qualify as languages for these purposes. For pseudo-Esperanto pluraloj, add oj. You will be doing your part toward world peace.
 
 #### CapiTaliSaTion
 
@@ -131,11 +131,11 @@ Never use `i` for the innermost loop variable. Use anything but. Use `i` liberal
 #### Conventions Schmentions
 
 
-Ignore the [Sun Java Coding Conventions](http://java.sun.com/docs/codeconv/), after all, Sun does. Fortunately, the compiler won't tattle when you violate them. The goal is to come up with names that differ subtlely only in case. If you are forced to use the capitalisation conventions, you can still subvert wherever the choice is ambigous, e.g. use *both* _input**F**ile**n**ame_ and _input**f**ile**N**ame_. Invent your own hopelessly complex naming conventions, then berate everyone else for not following them.
+Ignore the [Sun Java Coding Conventions](http://web.archive.org/web/20091003224540/http://java.sun.com/docs/codeconv/), after all, Sun does. Fortunately, the compiler won't tattle when you violate them. The goal is to come up with names that differ subtlely only in case. If you are forced to use the capitalisation conventions, you can still subvert wherever the choice is ambigous, e.g. use *both* _input**F**ile**n**ame_ and _input**f**ile**N**ame_. Invent your own hopelessly complex naming conventions, then berate everyone else for not following them.
 
 #### Lower Case l Looks a Lot Like the Digit 1
 
-Use lower case l to indicate long constants. e.g. `10l` is more likely to be mistaken for `101` that `10L` is. Ban any fonts that clearly disambiguate `uvw`, `wW`, `gq9`, `2z`, `5s`, `il17|!j`, `oO08`, `` `'" ``, `;,.`,  `m nn rn`, and `{[()]}`. Be creative.
+Use lower case l to indicate long constants. e.g. `10l` is more likely to be mistaken for `101` than `10L` is. Ban any fonts that clearly disambiguate `uvw`, `wW`, `gq9`, `2z`, `5s`, `il17|!j`, `oO08`, `` `'" ``, `;,.`, `m nn rn`, and `{[()]}`. Be creative.
 
 #### Reuse of Global Names as Private
 
@@ -204,7 +204,7 @@ where the `w` values hint that they are words, but they really refer to longs. T
 
 #### Reduce, Reuse, Recycle
 
-If you have to define a structure to hold data for callbacks, always call the structure `PRIVDATA`. Every module can define it's own `PRIVDATA`. In VC++, this has the advantage of confusing the debugger so that if you have a `PRIVDATA` variable and try to expand it in the watch window, it doesn't know which `PRIVDATA` you mean, so it just picks one.
+If you have to define a structure to hold data for callbacks, always call the structure `PRIVDATA`. Every module can define its own `PRIVDATA`. In VC++, this has the advantage of confusing the debugger so that if you have a `PRIVDATA` variable and try to expand it in the watch window, it doesn't know which `PRIVDATA` you mean, so it just picks one.
 
 #### Obscure film references
 
@@ -218,7 +218,7 @@ Much of the skill in writing unmaintainable code is the art of camouflage, hidin
 
 #### Code That Masquerades As Comments and Vice Versa
 
-Include sections of code that is commented out but at first glance does not appear to be.
+Include sections of code that are commented out but at first glance do not appear to be.
 
 ```js
 for(j=0; j<array_len; j+ =8)
@@ -226,9 +226,9 @@ for(j=0; j<array_len; j+ =8)
 total += array[j+0 ];
 total += array[j+1 ];
 total += array[j+2 ]; /* Main body of
-total += array[j+3]; * loop is unrolled
-total += array[j+4]; * for greater speed.
-total += array[j+5]; */
+total += array[j+3 ]; * loop is unrolled
+total += array[j+4 ]; * for greater speed.
+total += array[j+5 ]; */
 total += array[j+6 ];
 total += array[j+7 ];
 }
@@ -263,9 +263,7 @@ Hide macro definitions in amongst rubbish comments. The programmer will get bore
 
 #### Look Busy
 
-Look Busy
-
-use `define` statements to make made up functions that simply comment out their arguments, e.g.:
+Use `define` statements to make made up functions that simply comment out their arguments, e.g.:
 
 ```c
 #define fastcopy(x,y,z) /*xyz*/
@@ -288,7 +286,7 @@ break up `xy_z` onto two lines:
 _z // local_var OK
 ```
 
-That way a global search for `xy_z` will come up with nothing for that file. To the C preprocessor, the "\" at the end of the line means glue this line to the next one.
+That way a global search for `xy_z` will come up with nothing for that file. To the C preprocessor, the `\` at the end of the line means glue this line to the next one.
 
 #### Arbitrary Names That Masquerade as Keywords
 
@@ -336,7 +334,7 @@ In C++, overload `+`, `-`, `*`, and `/` to do things totally unrelated to additi
 
 #### Overload new
 
-Overload the `new` operator - much more dangerous than overloading the `+-/*`. This can cause total havoc if overloaded to do something different from it's original function (but vital to the object's function so it's very difficult to change). This should ensure users trying to create a dynamic instance get really stumped. You can combine this with the case sensitivity trick also have a member function, and variable called "New".
+Overload the `new` operator - much more dangerous than overloading the `+-/*`. This can cause total havoc if overloaded to do something different from its original function (but vital to the object's function so it's very difficult to change). This should ensure users trying to create a dynamic instance get really stumped. You can combine this with the case sensitivity trick also have a member function, and variable called "New".
 
 #### #define
 
@@ -505,7 +503,7 @@ If a module in a library needs an array to hold an image, just define a static a
 
 #### Dummy Interfaces
 
-Write an empty interface called something like `WrittenByMe`, and make all of your classes implement it. Then, write wrapper classes for any of Java's built-in classes that you use. The idea is to make sure that every single object in your program implements this interface. Finally, write all methods so that both their arguments and return types are `WrittenByMe`. This makes it nearly impossible to figure out what some methods do, and introduces all sorts of entertaining casting requirements. For a further extension, have each team member have his/her own personal interface (e.g., `WrittenByJoe`); any class worked on by a programmer gets to implement his/her interface. You can then arbitrary refer to objects by any one of a large number of meaningless interfaces!
+Write an empty interface called something like `WrittenByMe`, and make all of your classes implement it. Then, write wrapper classes for any of Java's built-in classes that you use. The idea is to make sure that every single object in your program implements this interface. Finally, write all methods so that both their arguments and return types are `WrittenByMe`. This makes it nearly impossible to figure out what some methods do, and introduces all sorts of entertaining casting requirements. For a further extension, have each team member have his/her own personal interface (e.g., `WrittenByJoe`); any class worked on by a programmer gets to implement his/her interface. You can then arbitrarily refer to objects by any one of a large number of meaningless interfaces!
 
 #### Giant Listeners
 
@@ -551,7 +549,7 @@ Declare every method and variable `public`. After all, somebody, sometime might 
 
 #### The Kama Sutra
 
-This technique has the added advantage of driving any users or documenters of the package to distraction as well as the maintenance programmers. Create a dozen overloaded variants of the same method that differ in only the most minute detail. I think it was Oscar Wilde who observed that positions 47 and 115 of the Kama Sutra were the same except in 115 the woman had her fingers crossed. Users of the package then have to carefully peruse the long list of methods to figure out just which variant to use. The technique also balloons the documentation and thus ensures it will more likely be out of date. If the boss asks why you are doing this, explain it is solely for the convenience of the users. Again for the full effect, clone any common logic and sit back and wait for it the copies to gradually get out of sync.
+This technique has the added advantage of driving any users or documenters of the package to distraction as well as the maintenance programmers. Create a dozen overloaded variants of the same method that differ in only the most minute detail. I think it was Oscar Wilde who observed that positions 47 and 115 of the Kama Sutra were the same except in 115 the woman had her fingers crossed. Users of the package then have to carefully peruse the long list of methods to figure out just which variant to use. The technique also balloons the documentation and thus ensures it will more likely be out of date. If the boss asks why you are doing this, explain it is solely for the convenience of the users. Again for the full effect, clone any common logic and sit back and wait for the copies to gradually get out of sync.
 
 #### Permute and Baffle
 
@@ -619,11 +617,7 @@ Within the body of a loop, assume that the loop action is successful and immedia
 
 #### Local Variables
 
-Within the body of a loop, assume that the loop action is successful and immediately update all pointer variables. If an exception is later detected on that loop action, back out the pointer advancements as side effects of a conditional expression following the loop body.
-
-#### Reduce, Reuse, Recycle
-
-If you have to define a structure to hold data for callbacks, always call the structure `PRIVDATA`. Every module can define it's own `PRIVDATA`. In VC++, this has the advantage of confusing the debugger so that if you have a `PRIVDATA` variable and try to expand it in the watch window, it doesn't know which `PRIVDATA` you mean, so it just picks one.
+Never use local variables. Whenever you feel the temptation to use one, make it into an instance or static variable instead to unselfishly share it with all the other methods of the class. This will save you work later when other methods need similar declarations. C++ programmers can go a step further by making all variables global.
 
 #### Configuration Files
 
@@ -728,7 +722,7 @@ Java offers great opportunity for obfuscation whenever you have to convert. As a
 
 #### Nesting
 
-Nest as deeply as you can. Good coders can get up to 10 levels of `( )` on a single line and 20 `{ }` in a single method. C++ coders have the additional powerful option of preprocessor nesting totally independent of the nest structure of the underlying code. You earn extra Brownie points whenever the beginning and end of a block appear on separate pages in a printed listing. Wherever possible, convert nested ifs into nested [? ] ternaries. If they span several lines, so much the better.
+Nest as deeply as you can. Good coders can get up to 10 levels of `( )` on a single line and 20 `{ }` in a single method. C++ coders have the additional powerful option of preprocessor nesting totally independent of the nest structure of the underlying code. You earn extra Brownie points whenever the beginning and end of a block appear on separate pages in a printed listing. Wherever possible, convert nested ifs into nested [?:] ternaries. If they span several lines, so much the better.
 
 #### Numeric Literals
 
@@ -753,7 +747,7 @@ Unfortunately, these techniques can only be used in native C classes, not Java.
 
 #### L o n g   L i n e s
 
-Try to pack as much as possible into a single line. This saves the overhead of temporary variables, and makes source files shorter by eliminating new line characters and white space. Tipremove all white space around operators. Good programmers can often hit the 255 character line length limit imposed by some editors. The bonus of long lines is that programmers who cannot read 6 point type must scroll to view them.
+Try to pack as much as possible into a single line. This saves the overhead of temporary variables, and makes source files shorter by eliminating new line characters and white space. Tip: remove all white space around operators. Good programmers can often hit the 255 character line length limit imposed by some editors. The bonus of long lines is that programmers who cannot read 6 point type must scroll to view them.
 
 #### Exceptions
 
@@ -772,7 +766,7 @@ title says it all.
 Follow the language lawyer discussions in the newsgroups about what various bits of tricky code should do e.g. `a=a++;` or `f(a++,a++);` then sprinkle your code liberally with the examples. In C, the effects of pre/post decrement code such as
 
 ```c
-*++b ? (*++b + *(b-1)) 0
+*++b ? (*++b + *(b-1)) : 0
 ```
 
 are not defined by the language spec. Every compiler is free to evaluate in a different order. This makes them doubly deadly. Similarly, take advantage of the complex tokenising rules of C and Java by removing all spaces.
@@ -851,7 +845,7 @@ if ( function_A() == OK )
 
 #### Pseudo C
 
-The real reason for `#define` was to help programmers who are familiar with another programming language to switch to C. Maybe you will find declarations like `#define begin { " or " #define end }` useful to write more interesting code.
+The real reason for `#define` was to help programmers who are familiar with another programming language to switch to C. Maybe you will find declarations like `#define begin {` or `#define end }` useful to write more interesting code.
 
 #### Confounding Imports
 
@@ -865,7 +859,7 @@ import MyPackage.Write;
 use:
 
 ```java
-import Mypackage. *;
+import Mypackage.*;
 ```
 
 Never fully qualify any method or class no matter how obscure. Let the maintenance programmer guess which of the packages/classes it belongs to. Of course, inconsistency in when you fully qualify and how you do your imports helps most.
@@ -925,7 +919,7 @@ Leaving bugs in your programs gives the maintenance programmer who comes along l
 
 #### Never Test
 
-Never test any code that handles the error cases, machine crashes, or OS glitches. Never check return codes from the OS. That code never gets executed anyway and slows down your test times. Besides, how can you possibly test your code to handle disk errors, file read errors, OS crashes, and all those sorts of events? Why, you would have to either an incredibly unreliable computer or a test scaffold that mimicked such a thing. Modern hardware never fails, and who wants to write code just for testing purposes? It isn't any fun. If users complain, just blame the OS or hardware. They'll never know.
+Never test any code that handles the error cases, machine crashes, or OS glitches. Never check return codes from the OS. That code never gets executed anyway and slows down your test times. Besides, how can you possibly test your code to handle disk errors, file read errors, OS crashes, and all those sorts of events? Why, you would have to have either an incredibly unreliable computer or a test scaffold that mimicked such a thing. Modern hardware never fails, and who wants to write code just for testing purposes? It isn't any fun. If users complain, just blame the OS or hardware. They'll never know.
 
 #### Never, Ever Do Any Performance Testing
 
@@ -1000,10 +994,10 @@ Avoid coding in Abundance, or using any of its principles kludged into other lan
 
 ## Dealing With Others
 
-> __Hell is other people._ _
+> _Hell is other people._
 > - Jean-Paul Sartre, No Exit, 1934
 
-There are many hints sprinkled thoroughout the tips above on how to rattle maintenance programmers though frustration, and how to foil your boss's attempts to stop you from writing unmaintainable code, or even how to foment an RWAR that involves everyone on the topic of how code should be formatted in the repository.
+There are many hints sprinkled throughout the tips above on how to rattle maintenance programmers though frustration, and how to foil your boss's attempts to stop you from writing unmaintainable code, or even how to foment an RWAR that involves everyone on the topic of how code should be formatted in the repository.
 
 #### Your Boss Knows Best
 
@@ -1168,7 +1162,7 @@ The more changes you can make between versions the better, you don't want users 
 
 #### Put C Prototypes In Individual Files
 
-instead of common headers. This has the dual advantage of requiring a change in parameter data type to be maintained in every file, **and** avoids any chance that the compiler or linker will detect type mismatches. This will be especially helpful when porting from 32 -> 64 bit platforms.
+Instead of common headers. This has the dual advantage of requiring a change in parameter data type to be maintained in every file, **and** avoids any chance that the compiler or linker will detect type mismatches. This will be especially helpful when porting from 32 -> 64 bit platforms.
 
 #### No Skill Required
 
@@ -1191,7 +1185,7 @@ Reverse the usual definitions of true and false. Sounds very obvious but it work
 #define FALSE 1
 ```
 
-somewhere deep in the code so that it is dredged up from the bowels of the program from some file that noone ever looks at anymore. Then force the program to do comparisons like:
+somewhere deep in the code so that it is dredged up from the bowels of the program from some file that no-one ever looks at anymore. Then force the program to do comparisons like:
 
 ```c
 if ( var == TRUE )
@@ -1315,7 +1309,7 @@ i = i;
 
 It almost goes without saying that the larger a function is, the better it is. And the more jumps and GOTOs the better. That way, any change must be analysed through many scenarios. It snarls the maintenance programmer in the spaghettiness of it all. And if the function is truly gargantuan, it becomes the Godzilla of the maintenance programmers, stomping them mercilessly to the ground before they have an idea of what's happened.
 
-#### A Picture is a 1000 Words; A Function is 1000 Lines
+#### A Picture is a 1000 Words; A Function is a 1000 Lines
 
 Make the body of every method as long as possible - hopefully you never write any methods or functions with fewer than a thousand lines of code, deeply nested, of course.
 
@@ -1351,7 +1345,7 @@ There are some efforts in this direction [NetRexx](http://www2.hursley.ibm.com/n
 
 ## The Shoemaker Has No Shoes
 
-Imagine having an accountant as a client who insisted on maintaining his general ledgers using a word processor. You would do you best to persuade him that his data should be structured. He needs validation with cross field checks. You would persuade him he could do so much more with that data when stored in a database, including controlled simultaneous update.
+Imagine having an accountant as a client who insisted on maintaining his general ledgers using a word processor. You would do your best to persuade him that his data should be structured. He needs validation with cross field checks. You would persuade him he could do so much more with that data when stored in a database, including controlled simultaneous update.
 
 Imagine taking on a software developer as a client. He insists on maintaining all his data (source code) with a text editor. He is not yet even exploiting the word processor's colour, type size or fonts.
 
